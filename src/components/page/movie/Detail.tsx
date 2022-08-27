@@ -11,12 +11,16 @@ import { useAppSelector, useAppDispatch } from '@/hooks/useReactRedux';
 // Stores
 import { movieStart, movieDetail, movieFailure } from '@/store/module/movie/movieSlice';
 
+// Components
+import Loading from '@/common/loading/Loading';
+
 // Styles
 import { Desc } from './Detail.style';
 
 const Detail: React.FC = () => {
   const router = useRouter();
   const dispatch = useAppDispatch();
+  const loading = useAppSelector((state) => state.module.movie.loading);
   const movie = useAppSelector((state) => state.module.movie.detail);
 
   useEffect(() => {
@@ -36,6 +40,8 @@ const Detail: React.FC = () => {
     };
     fetchMovies();
   }, [router.isReady]);
+
+  if (loading) return <Loading />;
 
   return (
     <Grid container spacing={2}>

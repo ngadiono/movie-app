@@ -13,11 +13,13 @@ import { dialogOpen } from '@/store/ui/dialog/dialogSlice';
 // Components
 import CardImg from '@/common/cardimg/CardImg';
 import Modal from '@/common/modal/Modal';
+import Loading from '@/common/loading/Loading';
 
 const Home: React.FC = () => {
   const dispatch = useAppDispatch();
   const movie = useAppSelector((state) => state.module.movie);
   const dialog = useAppSelector((state) => state.ui.dialog);
+  const loading = useAppSelector((state) => state.module.movie.loading);
 
   const handlePoster = (value: object) => {
     dispatch(dialogOpen(!dialog.open));
@@ -37,6 +39,8 @@ const Home: React.FC = () => {
     fetchMovies();
   }, []);
 
+  if (loading) return <Loading />;
+
   return (
     <>
       <Grid container spacing={3}>
@@ -51,8 +55,12 @@ const Home: React.FC = () => {
           </Grid>
         ))}
       </Grid>
-      <Modal open={dialog.open} onClose={() => dispatch(dialogOpen(!dialog.open))} title={movie.detail.Title}>
-        <img alt={movie.detail.Title} src={movie.detail.Poster} style={{ width: '100%' }} />
+      <Modal
+        open={dialog.open}
+        onClose={() => dispatch(dialogOpen(!dialog.open))}
+        title={movie.detail?.Title}
+      >
+        <img alt={movie.detail?.Title} src={movie.detail?.Poster} style={{ width: '100%' }} />
       </Modal>
     </>
   );
