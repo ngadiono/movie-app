@@ -7,7 +7,7 @@ import Grid from '@mui/material/Grid';
 import { useAppSelector, useAppDispatch } from '@/hooks/useReactRedux';
 
 // Stores
-import { movieStart, movieSuccess, movieFailure } from '@/store/module/movie/movieSlice';
+import { movieStart, movieList, movieFailure } from '@/store/module/movie/movieSlice';
 
 // Components
 import CardImg from '@/common/cardimg/CardImg';
@@ -20,8 +20,8 @@ const Home: React.FC = () => {
     dispatch(movieStart());
     const fetchMovies = async () => {
       try {
-        const res = await axios.get(`${process.env.NEXT_PUBLIC_IMDB_API}&s=one piece&page=1`);
-        dispatch(movieSuccess(res.data.Search));
+        const res = await axios.get(`${process.env.NEXT_PUBLIC_IMDB_API}&s=one piece`);
+        dispatch(movieList(res.data.Search));
       } catch (error) {
         dispatch(movieFailure());
       }
@@ -33,7 +33,7 @@ const Home: React.FC = () => {
     <Grid container spacing={3}>
       {movies.map(({ Title, Poster, imdbID }) => (
         <Grid item xs={3} key={imdbID}>
-          <CardImg title={Title} src={Poster} />
+          <CardImg title={Title} src={Poster} id={imdbID} />
         </Grid>
       ))}
     </Grid>

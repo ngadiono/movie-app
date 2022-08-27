@@ -1,13 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 export interface MovieState {
-  list: [];
+  list: any[];
+  detail: any;
   loading: boolean;
   error: boolean;
 }
 
 const initialState: MovieState = {
   list: [],
+  detail: {},
   loading: false,
   error: false,
 };
@@ -19,9 +21,13 @@ export const movieSlice = createSlice({
     movieStart: (state) => {
       state.loading = true;
     },
-    movieSuccess: (state, action) => {
+    movieList: (state, action) => {
       state.loading = false;
       state.list = action.payload;
+    },
+    movieDetail: (state, action) => {
+      state.loading = false;
+      state.detail = action.payload;
     },
     movieFailure: (state) => {
       state.loading = false;
@@ -30,6 +36,6 @@ export const movieSlice = createSlice({
   },
 });
 
-export const { movieStart, movieSuccess, movieFailure } = movieSlice.actions;
+export const { movieStart, movieList, movieDetail, movieFailure } = movieSlice.actions;
 
 export default movieSlice.reducer;
