@@ -82,7 +82,7 @@ const Home: React.FC = () => {
   return (
     <>
       <Grid container spacing={3}>
-        {movie.list.map(({ Title, Poster, imdbID }) => (
+        {movie.list?.map(({ Title, Poster, imdbID }) => (
           <Grid item xs={3} key={imdbID}>
             <CardImg
               title={Title}
@@ -93,6 +93,7 @@ const Home: React.FC = () => {
           </Grid>
         ))}
       </Grid>
+      {movie.list === null && <Box sx={{ textAlign: 'center' }}>Movie not found!</Box>}
       {loadingScroll ? <Box sx={{ textAlign: 'center' }}>Loading data ...</Box> : ''}
       {noData ? <Box sx={{ textAlign: 'center' }}>No data anymore ...</Box> : ''}
       <Modal

@@ -86,7 +86,7 @@ const searchFun = (
       const { totalResults, Search } = data;
       setIsLoading(false);
       setResults(totalResults ? Search.map((i: any) => i.Title) : []);
-      dispatch(movieList(Search));
+      dispatch(movieList(totalResults ? Search : null));
     });
 };
 

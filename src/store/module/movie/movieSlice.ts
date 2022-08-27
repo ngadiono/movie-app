@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 export interface MovieState {
-  list: any[];
+  list: any;
   detail: any;
   loading: boolean;
   loadingScroll: boolean;

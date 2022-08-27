@@ -91,10 +91,10 @@ const searchFun = (
       },
     })
     .then(({ data }) => {
-      const { totalResults, Search } = data;
+      const { totalResults, Search, Response } = data;
       setIsLoading(false);
       setResults(totalResults ? Search.map((i: any) => i.Title) : []);
-      dispatch(movieList(Search));
+      dispatch(movieList(totalResults ? Search : null));
     });
 };
 
