@@ -20,7 +20,7 @@ const CardImg: React.FC<Props> = ({ id, title, src, showPoster }) => {
       <CardActionArea onClick={() => showPoster()}>
         <CardMedia component="img" image={src} alt={title} />
         <CardContent>
-          <Typography gutterBottom variant="subtitle1" component="div">
+          <Typography gutterBottom variant="subtitle1">
             {title}
           </Typography>
         </CardContent>
