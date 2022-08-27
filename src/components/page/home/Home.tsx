@@ -55,11 +55,7 @@ const Home: React.FC = () => {
       dispatch(movieLoadingScroll(true));
     }
     try {
-      const res = await axios.get(`${process.env.NEXT_PUBLIC_IMDB_API}&s=${movie.search}&page=${value}`, {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
+      const res = await axios.get(`${process.env.NEXT_PUBLIC_IMDB_API}&s=${movie.search}&page=${value}`);
       if (value === 1) {
         dispatch(movieList(res.data.Search));
         setPage(page + 1);
