@@ -1,3 +1,4 @@
+This application uses Next.js as a boilerplate project, supported by Material UI (MUI) for web display and components used, for state management using the Redux toolkit which includes Redux, Reduk-thunk and react-redux. Core code writing using Typescript and unit testing using Jest.
 ## Table of contents
 
 - [Table of contents](#table-of-contents)
