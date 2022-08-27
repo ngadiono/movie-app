@@ -1,0 +1,19 @@
+Framework yang saya pakai menggunakan Next.js yang sudah termodifikasi untuk kebutuhan struktural project files tanpa mempengaruhi core fitur dari Next.js nya, 
+bisa di check disini : https://ngadionocr.gitbook.io/next-boilerplate
+
+Untuk component terbagi atas 3 bagian
+1. Layout Component
+Component ini digunakan untuk handle layout yang sifatnya "Per-Page Layouts" dengan dokumentasi disini https://nextjs.org/docs/basic-features/layouts. 
+Kenapa saya menggunakan model "Per-Page Layouts" dikarena kan untuk kebutuhan yang cocok akan website landing yang dimana main layout bersifat dinamis, dan 
+memberikan kebebasan developer untuk membuat beberapa main layout lainnya, berbeda kasus jika menggunakan "Single Shared Layout" yang cocok digunakan 
+untuk aplikasi yang sifatnya main layout hanya cukup 1, contohnya web dashboard. 
+Tipe main layout bisa di cek disini https://ngadionocr.gitbook.io/next-boilerplate/features/layouts,
+Untuk app ini menggunakan tipe landing yang didalamnya terdapat 4 bagian yaitu Container, Header, Content dan Footer.
+
+2. Page Component
+Component ini digunakan untuk handle semua component yang berelasi dengan component yang ada di per halaman website, kenapa saya pisah seperti ini, dikarenakan
+untuk mempartial code agar lebih ramping dan simple, dan fokus file di dalam folder "pages" (routing next.js) hanya digunakan untuk penggunaan fetching data (https://nextjs.org/docs/basic-features/data-fetching/overview)
+dan penerapan layout sistem.
+
+3. Common Component
+Component ini digunakan untuk handle semua component yang sifatnya reusable, untuk app ini saya hanya membuat 3 component saja yaitu card movie, modal buat poster, loading ketika fetching movie list, infinity scroll, search.

@@ -1,5 +1,5 @@
 // Vendors
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import AppBar from '@mui/material/AppBar';
@@ -27,6 +27,20 @@ const Header: React.FC = () => {
   const handleCheckRouter = () => {
     return router.pathname !== '/movie/[slug]';
   };
+
+  useEffect(() => {
+    const listener = (event) => {
+      if (event.code === 'Enter' || event.code === 'NumpadEnter') {
+        console.log('Enter key was pressed. Run your function.');
+        event.preventDefault();
+        // callMyFunction();
+      }
+    };
+    document.addEventListener('keydown', listener);
+    return () => {
+      document.removeEventListener('keydown', listener);
+    };
+  }, []);
 
   return (
     <Box sx={{ flexGrow: 1 }}>
