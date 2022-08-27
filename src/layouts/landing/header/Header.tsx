@@ -8,7 +8,6 @@ import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import MenuIcon from '@mui/icons-material/Menu';
-import SearchIcon from '@mui/icons-material/Search';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 // Hooks
@@ -17,8 +16,8 @@ import { useAppDispatch } from '@/hooks/useReactRedux';
 // Stores
 import { movieReset } from '@/store/module/movie/movieSlice';
 
-// Styles
-import { Search, SearchIconWrapper, StyledInputBase } from './Header.style';
+// Components
+import FieldSearch from '@/page/home/fieldsearch/FieldSearch';
 
 const Header: React.FC = () => {
   const router = useRouter();
@@ -27,20 +26,6 @@ const Header: React.FC = () => {
   const handleCheckRouter = () => {
     return router.pathname !== '/movie/[slug]';
   };
-
-  useEffect(() => {
-    const listener = (event) => {
-      if (event.code === 'Enter' || event.code === 'NumpadEnter') {
-        console.log('Enter key was pressed. Run your function.');
-        event.preventDefault();
-        // callMyFunction();
-      }
-    };
-    document.addEventListener('keydown', listener);
-    return () => {
-      document.removeEventListener('keydown', listener);
-    };
-  }, []);
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -72,14 +57,7 @@ const Header: React.FC = () => {
           >
             Movie {handleCheckRouter() ? 'List' : 'Detail'}
           </Typography>
-          {handleCheckRouter() && (
-            <Search>
-              <SearchIconWrapper>
-                <SearchIcon />
-              </SearchIconWrapper>
-              <StyledInputBase placeholder="Search…" inputProps={{ 'aria-label': 'search' }} />
-            </Search>
-          )}
+          {handleCheckRouter() && <FieldSearch />}
         </Toolbar>
       </AppBar>
     </Box>

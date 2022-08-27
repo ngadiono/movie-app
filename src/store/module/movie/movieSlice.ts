@@ -6,6 +6,7 @@ export interface MovieState {
   loading: boolean;
   loadingScroll: boolean;
   error: boolean;
+  search: string;
 }
 
 const initialState: MovieState = {
@@ -14,6 +15,7 @@ const initialState: MovieState = {
   loading: false,
   loadingScroll: false,
   error: false,
+  search: 'one piece',
 };
 
 export const movieSlice = createSlice({
@@ -38,11 +40,21 @@ export const movieSlice = createSlice({
       state.loading = false;
       state.error = true;
     },
+    movieSearch: (state, action) => {
+      state.search = action.payload;
+    },
     movieReset: () => initialState,
   },
 });
 
-export const { movieLoading, movieLoadingScroll, movieList, movieDetail, movieFailure, movieReset } =
-  movieSlice.actions;
+export const {
+  movieLoading,
+  movieLoadingScroll,
+  movieList,
+  movieDetail,
+  movieFailure,
+  movieReset,
+  movieSearch,
+} = movieSlice.actions;
 
 export default movieSlice.reducer;

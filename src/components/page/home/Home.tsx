@@ -14,6 +14,7 @@ import {
   movieList,
   movieDetail,
   movieFailure,
+  movieSearch,
 } from '@/store/module/movie/movieSlice';
 import { dialogOpen } from '@/store/ui/dialog/dialogSlice';
 
@@ -54,7 +55,7 @@ const Home: React.FC = () => {
       dispatch(movieLoadingScroll(true));
     }
     try {
-      const res = await axios.get(`${process.env.NEXT_PUBLIC_IMDB_API}&s=one piece&page=${value}`);
+      const res = await axios.get(`${process.env.NEXT_PUBLIC_IMDB_API}&s=${movie.search}&page=${value}`);
       if (value === 1) {
         dispatch(movieList(res.data.Search));
         setPage(page + 1);
@@ -92,8 +93,8 @@ const Home: React.FC = () => {
           </Grid>
         ))}
       </Grid>
-      {loadingScroll ? <Box sx={{ textAlign: 'center' }}>loading data ...</Box> : ''}
-      {noData ? <Box sx={{ textAlign: 'center' }}>no data anymore ...</Box> : ''}
+      {loadingScroll ? <Box sx={{ textAlign: 'center' }}>Loading data ...</Box> : ''}
+      {noData ? <Box sx={{ textAlign: 'center' }}>No data anymore ...</Box> : ''}
       <Modal
         open={dialog.open}
         onClose={() => dispatch(dialogOpen(!dialog.open))}
