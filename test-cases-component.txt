@@ -1,5 +1,5 @@
 Framework yang saya pakai menggunakan Next.js yang sudah termodifikasi untuk kebutuhan struktural project files tanpa mempengaruhi core fitur dari Next.js nya, 
-bisa di check disini : https://ngadionocr.gitbook.io/next-boilerplate
+bisa di check disini : https://ngadionocr.gitbook.io/next-boilerplate.
 
 Untuk component terbagi atas 3 bagian
 1. Layout Component
