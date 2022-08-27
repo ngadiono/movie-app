@@ -17,3 +17,9 @@ dan penerapan layout sistem.
 
 3. Common Component
 Component ini digunakan untuk handle semua component yang sifatnya reusable, untuk app ini saya hanya membuat 3 component saja yaitu card movie, modal buat poster, loading ketika fetching movie list, infinity scroll, search.
+
+NB: 
+- API Imdb tidak bisa fetch initial tanpa search url params, dikarenakan jika dikosongin akan memberikan response "Too many results.", jadi untuk init default list movie harus pakai params search.
+- Untuk keseluruhan fetching data saya hanya menerapkan fetching & state management dari CSR (client side rendering) saja, karena tidak ada kebutuhan untuk SEO, 
+jika dikemudian hari ada kebutuhan akan ini maka harus menggunakan fetching data hybrid SSR & CSR menggunakan fitur https://nextjs.org/docs/basic-features/data-fetching/overview
+dan state management juga harus mampu hydrate SSR to CSR.

@@ -9,7 +9,7 @@ import Typography from '@mui/material/Typography';
 import { useAppSelector, useAppDispatch } from '@/hooks/useReactRedux';
 
 // Stores
-import { movieStart, movieDetail, movieFailure } from '@/store/module/movie/movieSlice';
+import { movieLoading, movieDetail, movieFailure } from '@/store/module/movie/movieSlice';
 
 // Components
 import Loading from '@/common/loading/Loading';
@@ -24,7 +24,7 @@ const Detail: React.FC = () => {
   const movie = useAppSelector((state) => state.module.movie.detail);
 
   useEffect(() => {
-    dispatch(movieStart());
+    dispatch(movieLoading(true));
     const fetchMovies = async () => {
       if (!router.isReady) return;
       try {
@@ -36,6 +36,8 @@ const Detail: React.FC = () => {
         }
       } catch (error) {
         dispatch(movieFailure());
+      } finally {
+        dispatch(movieLoading(false));
       }
     };
     fetchMovies();
