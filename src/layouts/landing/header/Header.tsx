@@ -11,11 +11,18 @@ import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
+// Hooks
+import { useAppDispatch } from '@/hooks/useReactRedux';
+
+// Stores
+import { movieReset } from '@/store/module/movie/movieSlice';
+
 // Styles
 import { Search, SearchIconWrapper, StyledInputBase } from './Header.style';
 
 const Header: React.FC = () => {
   const router = useRouter();
+  const dispatch = useAppDispatch();
 
   const handleCheckRouter = () => {
     return router.pathname !== '/movie/[slug]';
@@ -31,7 +38,14 @@ const Header: React.FC = () => {
             </IconButton>
           ) : (
             <Link href="/">
-              <IconButton size="large" edge="start" color="inherit" aria-label="open drawer" sx={{ mr: 2 }}>
+              <IconButton
+                size="large"
+                edge="start"
+                color="inherit"
+                aria-label="open drawer"
+                sx={{ mr: 2 }}
+                onClick={() => dispatch(movieReset())}
+              >
                 <ArrowBackIcon />
               </IconButton>
             </Link>

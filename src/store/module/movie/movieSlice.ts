@@ -9,7 +9,7 @@ export interface MovieState {
 
 const initialState: MovieState = {
   list: [],
-  detail: {},
+  detail: null,
   loading: false,
   error: false,
 };
@@ -33,9 +33,10 @@ export const movieSlice = createSlice({
       state.loading = false;
       state.error = true;
     },
+    movieReset: () => initialState,
   },
 });
 
-export const { movieStart, movieList, movieDetail, movieFailure } = movieSlice.actions;
+export const { movieStart, movieList, movieDetail, movieFailure, movieReset } = movieSlice.actions;
 
 export default movieSlice.reducer;

@@ -11,12 +11,13 @@ interface Props {
   id: string;
   title: string;
   src: string;
+  showPoster: (value?: object) => void;
 }
 
-const CardImg: React.FC<Props> = ({ id, title, src }) => {
+const CardImg: React.FC<Props> = ({ id, title, src, showPoster }) => {
   return (
     <Card>
-      <CardActionArea>
+      <CardActionArea onClick={() => showPoster()}>
         <CardMedia component="img" image={src} alt={title} />
         <CardContent>
           <Typography gutterBottom variant="subtitle1" component="div">
