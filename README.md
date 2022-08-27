@@ -41,6 +41,14 @@
    yarn start
    ```
 
+4. Unit testing 
+
+   ```bash
+   npm run test   
+   # or
+   yarn test   
+   ```
+
 ## System Requirements
 
 - [Node.js 12.0](https://nodejs.org/en/) or later

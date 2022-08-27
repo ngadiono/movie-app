@@ -8,7 +8,7 @@ import { Wrapper } from './Loading.style';
 
 const Loading: React.FC = () => {
   return (
-    <Wrapper>
+    <Wrapper data-testid="loading">
       <div>
         <CircularProgress />
         <Typography variant="h4" gutterBottom>

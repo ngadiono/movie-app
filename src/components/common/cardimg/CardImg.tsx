@@ -16,7 +16,7 @@ interface Props {
 
 const CardImg: React.FC<Props> = ({ id, title, src, showPoster }) => {
   return (
-    <Card>
+    <Card data-testid="card">
       <CardActionArea onClick={() => showPoster()}>
         <CardMedia component="img" image={src} alt={title} />
         <CardContent>
