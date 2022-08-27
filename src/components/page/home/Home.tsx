@@ -56,14 +56,18 @@ const Home: React.FC = () => {
     }
     try {
       const res = await axios.get(`${process.env.NEXT_PUBLIC_IMDB_API}&s=${movie.search}&page=${value}`);
-      if (value === 1) {
-        dispatch(movieList(res.data.Search));
-        setPage(page + 1);
+      if (res.data.Response === 'True') {
+        if (value === 1) {
+          dispatch(movieList(res.data.Search));
+          setPage(page + 1);
+        } else {
+          const newMovieList = movie.list.concat(res.data.Search);
+          dispatch(movieList(newMovieList));
+          setPage(page + 1);
+          if (res.data.length === 0) setNoData(true);
+        }
       } else {
-        const newMovieList = movie.list.concat(res.data.Search);
-        dispatch(movieList(newMovieList));
-        setPage(page + 1);
-        if (res.data.length === 0) setNoData(true);
+        setNoData(true);
       }
     } catch (error) {
       dispatch(movieFailure());
