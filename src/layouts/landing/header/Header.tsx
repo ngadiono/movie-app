@@ -1,5 +1,5 @@
 // Vendors
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import AppBar from '@mui/material/AppBar';
@@ -18,6 +18,7 @@ import { movieReset } from '@/store/module/movie/movieSlice';
 
 // Components
 import FieldSearch from '@/page/home/fieldsearch/FieldSearch';
+import FieldSearchButton from '@/page/home/fieldsearch/FieldSearchButton';
 
 const Header: React.FC = () => {
   const router = useRouter();
@@ -57,7 +58,12 @@ const Header: React.FC = () => {
           >
             Movie {handleCheckRouter() ? 'List' : 'Detail'}
           </Typography>
-          {handleCheckRouter() && <FieldSearch />}
+          {handleCheckRouter() && (
+            <>
+              <FieldSearch />
+              <FieldSearchButton />
+            </>
+          )}
         </Toolbar>
       </AppBar>
     </Box>

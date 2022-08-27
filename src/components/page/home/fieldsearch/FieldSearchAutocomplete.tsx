@@ -7,6 +7,7 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
+import Button from '@mui/material/Button';
 
 // Hooks
 import { useAppSelector, useAppDispatch } from '@/hooks/useReactRedux';
@@ -50,16 +51,7 @@ const SearchList: React.FC<{
   onSelect: (item: string) => void;
 }> = ({ items, onSelect }) => {
   return (
-    <List
-      sx={{
-        position: 'absolute',
-        zIndex: 1,
-        left: '8px',
-        overflowY: 'scroll',
-        height: '300px',
-        padding: 0,
-      }}
-    >
+    <List>
       {items.map((item, index) => (
         <ListItem
           key={item + index}
@@ -100,7 +92,7 @@ const searchFun = (
 
 const debouncedSearch = debounce(searchFun, DEBOUNCE);
 
-const FieldSearch: FC = () => {
+const FieldSearchAutocomplete: FC = () => {
   const dispatch = useAppDispatch();
   const [results, setResults] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -132,8 +124,9 @@ const FieldSearch: FC = () => {
   return (
     <Wrapper>
       <SearchField onSearch={onSearch} isLoading={isLoading} />
+      {!!results.length && <SearchList items={results} onSelect={(i) => alert(i)} />}
     </Wrapper>
   );
 };
 
-export default FieldSearch;
+export default FieldSearchAutocomplete;
