@@ -11,7 +11,7 @@ import SearchIcon from '@mui/icons-material/Search';
 // Styles
 import { Search, SearchIconWrapper, StyledInputBase } from './Header.style';
 
-export default function SearchAppBar() {
+const Header: React.FC = () => {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -37,4 +37,6 @@ export default function SearchAppBar() {
       </AppBar>
     </Box>
   );
-}
+};
+
+export default Header;

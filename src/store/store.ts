@@ -8,7 +8,7 @@ import i18nReducer from './i18n/i18nSlice';
 import landingReducer from './layout/landing/landingSlice';
 
 //module reducers
-import profileReducer from './module/profile/profileSlice';
+import movieReducer from './module/movie/movieSlice';
 
 //ui reducers
 import dialogReducer from './ui/dialog/dialogSlice';
@@ -18,7 +18,7 @@ const layoutReducer = combineReducers({
 });
 
 const ModuleReducer = combineReducers({
-  profile: profileReducer,
+  movie: movieReducer,
 });
 
 const UiReducer = combineReducers({
