@@ -23,3 +23,4 @@ NB:
 - Untuk keseluruhan fetching data saya hanya menerapkan fetching & state management dari CSR (client side rendering) saja, karena tidak ada kebutuhan untuk SEO, 
 jika dikemudian hari ada kebutuhan akan ini maka harus menggunakan fetching data hybrid SSR & CSR menggunakan fitur https://nextjs.org/docs/basic-features/data-fetching/overview
 dan state management juga harus mampu hydrate SSR to CSR.
+- Web production terkena CORS karena https akses ke http
