@@ -35,7 +35,11 @@ const Home: React.FC = () => {
 
   if (typeof window !== 'undefined') {
     window.onscroll = () => {
-      if (window.innerHeight + document.documentElement.scrollTop === document.documentElement.offsetHeight) {
+      if (
+        window.innerHeight + document.documentElement.scrollTop === document.documentElement.offsetHeight ||
+        window.innerHeight + document.documentElement.scrollTop + 0.5 ===
+          document.documentElement.offsetHeight
+      ) {
         if (!noData) {
           fetchMovies(page);
         }
@@ -67,6 +71,7 @@ const Home: React.FC = () => {
           if (res.data.length === 0) setNoData(true);
         }
       } else {
+        console.log('y');
         setNoData(true);
       }
     } catch (error) {
